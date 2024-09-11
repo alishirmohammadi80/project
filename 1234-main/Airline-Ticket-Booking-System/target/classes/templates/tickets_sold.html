@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>بلیط</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container my-2">
+    <div class="card">
+        <div class="ui-icon">
+            <div th:switch="${tickets}" class="container my-5">
+                <p class="ui-icon">
+
+                <form th:action="@{/searchTicketsSold}" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" name= "keyword" id = "keyword" type="text" placeholder="Search" aria-label="Search" th:value="${keyword}">
+                    <input class="btn btn-outline-success active my-2 my-sm-0" type="submit" value="Search" />
+                <a th:href="@{/ticket/export/excel}" class="btn btn-unique">
+                    <i class="fa fa-download">  Export Excel </i></a>
+                </form>
+                </p>
+                <div class="col-md-30">
+                    <div th:case="*">
+                        <table class="table">
+                            <thead style="background-color:#36454F; color: aliceblue;">
+                            <tr>
+                                <th>شماره پرواز</th>
+                                <th>هزینه</th>
+                                <th>زمان پرواز</th>
+                                <th>ایرلاین</th>
+                                <th>هواپیما</th>
+                                <th>مبدا</th>
+                                <th>مقصد</th>
+                                <th>تاریخ پرواز</th>
+                                <th>ساعت پرواز</th>
+                                <th>شماره صندلی</th>
+                                <th>کد ملی خریدار</th>
+                                <!--th>حذف</th-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="ticket:${tickets}">
+                                <td th:text="${ticket.flight.flightNumber}"></td>
+                                <td th:text="${ticket.flight.fare}"></td>
+                                <td th:text="${ticket.flight.journeyTime}"></td>
+                                <td th:text="${ticket.flight.airlines.airlineName}"></td>
+                                <td th:text="${ticket.flight.airplanes.airplaneName}"></td>
+                                <td th:text="${ticket.flight.sourceStop.name}"></td>   -
+                                <td th:text="${ticket.flight.destStop.name}"></td>
+                                <td th:text="${ticket.flight.tripDate}"></td>
+                                <td th:text="${ticket.flight.tripTime}"></td>
+                                <td th:text="${ticket.seatNumber}"></td>
+                                <td th:text="${ticket.customer.nationalCode}"></td>
+                                <!--td><a th:href="@{/remove-flight/{id}(id=${flight.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td-->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

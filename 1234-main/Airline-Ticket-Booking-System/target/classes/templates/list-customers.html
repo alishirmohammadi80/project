@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>مشتری</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+<body >
+<div th:insert="fragments/header :: header"></div>
+<div class="container my-2">
+    <div class="card">
+        <div class="ui-icon">
+            <div th:switch="${customer}" class="container my-5">
+                <p class="ui-icon">
+                <form th:action="@{/searchCustomer}" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" name= "keyword" id = "keyword" type="text" placeholder="Search" aria-label="Search" th:value="${keyword}">
+                    <input class="btn btn-outline-success active my-2 my-sm-0" type="submit" value="Search" />
+                <a href="/addCustomer" class="btn btn-unique">
+                    <i class="fas fa-user-plus ml-2">افزودن مشتری </i></a>
+                <a th:href="@{/customer/export/excel}" class="btn btn-unique">
+                    <i class="fa fa-download">  Export Excel </i></a>
+                </form>
+                </p>
+                <div class="col-md-30">
+                    <div th:case="*">
+                        <table class="table">
+                            <thead style="background-color:#36454F; color: aliceblue;">
+                            <tr>
+                                <!--th>ID</th-->
+                                <th>نام ونام خانوادگی</th>
+                                <th>کدملی</th>
+                                <th>تاریخ تولد</th>
+                                <th>ایمیل</th>
+                                <th>شماره موبایل</th>
+                                <th>ویرایش</th>
+                                <th>حذف</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="customer: ${customers}">
+                                <!--td th:text="${customer.id}"></td-->
+                                <td th:text="${customer.fullName}"></td>
+                                <td th:text="${customer.nationalCode}"></td>
+                                <td th:text="${customer.dateOfBirth}"></td>
+                                <td th:text="${customer.email}"></td>
+                                <td th:text="${customer.phoneNumber}"></td>
+                                <td><a th:href="@{/updateCustomer/{id}(id=${customer.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                <td><a th:href="@{/remove-customer/{id}(id=${customer.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+
+</html>

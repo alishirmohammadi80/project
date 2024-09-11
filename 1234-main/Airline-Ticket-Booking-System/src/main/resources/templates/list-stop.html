@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>فرودگاه</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+<body >
+<div th:insert="fragments/header :: header"></div>
+<div class="container my-2">
+    <div class="card">
+        <div class="ui-icon">
+            <div th:switch="${stop}" class="container my-5">
+                <p class="ui-icon">
+
+                <form th:action="@{/searchStop}" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" name= "keyword" id = "keyword" type="text" placeholder="Search" aria-label="Search" th:value="${keyword}">
+                    <input class="btn btn-outline-success active my-2 my-sm-0" type="submit" value="Search" />
+                <a href="/addStop" class="btn btn-unique">
+                    <i class="fas fa-user-plus ml-2">افزودن فرودگاه </i></a>
+                <a th:href="@{/stop/export/excel}" class="btn btn-unique">
+                    <i class="fa fa-download">  Export Excel </i></a>
+                </form>
+                </p>
+                <div class="col-md-12">
+                    <div th:case="*">
+                        <table class="table">
+                            <thead style="background-color:#36454F; color: aliceblue;">
+                            <tr>
+                                <th>ID</th>
+                                <th>نام فرودگاه</th>
+                                <th>کد فرودگاه</th>
+                                <th>جزئیات</th>
+                                <th>ویرایش</th>
+                                <!--th>حذف</th-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="stop: ${stops}">
+                                <td th:text="${stop.id}"></td>
+                                <td th:text="${stop.name}"></td>
+                                <td th:text="${stop.code}"></td>
+                                <td th:text="${stop.detail}"></td>
+                                <td><a th:href="@{/updateStop/{id}(id=${stop.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                <!--td><a th:href="@{/remove-Stop/{id}(id=${stop.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td-->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

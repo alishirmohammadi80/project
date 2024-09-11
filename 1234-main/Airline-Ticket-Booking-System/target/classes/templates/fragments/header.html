@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Header</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+
+</head>
+
+<body>
+<!--nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+
+</nav-->
+<nav th:fragment= "header" class="navbar navbar-expand-lg navbar-dark bg-primary" style="background-color: #3A5A81; color: aliceblue;">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <!--button th:href="@{/}" class="btn"><i class="fa fa-home"></i>صفحه نخست</button-->
+
+  <a style = " color  :  azure;"class="nav-link" href="/"><img src="https://www.pngall.com/wp-content/uploads/4/House-Transparent.png" width="34" height="34"></a>
+
+
+
+  <a style = " color  :  azure;" class="nav-link" href="/airlines">ایرلاین<img src="https://airhex.com/images/airline-logos/tail/iran-air.png" width="30" height="30"></a>
+
+
+  <a style = " color  :  azure;"  class="nav-link" href="/airplanes">هواپیما <img src="https://www.freeiconspng.com/uploads/airplane-icon-image-gallery-1.png" width="30" height="30"></a>
+
+
+  <a style = " color  :  azure;" class="nav-link" href="/stop">فرودگاه <img src="https://www.pinclipart.com/picdir/big/552-5523535_flying-clipart-airport-terminal-airport-terminal-icon-transparent.png" width="40" height="40"></a>
+
+  <a style = " color  :  azure;" class="nav-link" href="/flights">پرواز <img src="https://cdn-icons-png.flaticon.com/512/476/476505.png" width="38" height="38"></a>
+
+  <a style = " color  :  azure;"class="nav-link" href="/ticket"> بلیط<img src="https://png2.cleanpng.com/sh/983c696b7eb1b745e62508707ff549ab/L0KzQYm3U8MyN6t3j5H0aYP2gLBuTfFqeqFxedDuLXbvebjvlL1icaNxgdDuLYTsc7zslL1kd551jeZucj3sc7F1k711cZRwfeY2NXHldoeCWMRiOWI3Sqs3MEO4SIKBVMYyPWM3TKs8OEK7RoaCWL5xdpg=/kisspng-airplane-flight-airline-ticket-computer-icons-ticket-5abf6984a11229.0358184615224938286598.png" width="38" height="38"></a>
+
+  <a  style = " color  :  azure;" class="nav-link" href="/customers">مشتری<img src="https://vandemeester.com/wp-content/uploads/2019/08/09b412968b.png" width="30" height="30"></a>
+
+  <a  style = " color  :  azure;"class="nav-link" href="/register">ثبت نام <img src="https://vbrbrasil.com.br/wp-content/uploads/2021/02/contract-150x150.png" width="30" height="30"></a>
+
+  <!--li class="nav-item active">
+  <a class="nav-link" href="/login">ورود <img src="https://cdn1.iconfinder.com/data/icons/content-10/24/user-profile-512.png" width="38" height="38"></a>
+</li-->
+  <a
+          style = " color  :  azure;"
+
+          class="nav-link" href="/logout">خروج <img src="https://www.nicepng.com/png/full/191-1917686_family-dollar-logo-icon-sign-out.png" width="30" height="30">
+
+  </a>
+
+
+
+  <!--form th:action="@{/searchBook}" class="form-inline my-2 my-lg-0">
+
+      <input class="form-control mr-sm-2" name= "keyword" id = "keyword" type="text" placeholder="Search" aria-label="Search" th:value="${keyword}">
+      <input class="btn btn-outline-success active my-2 my-sm-0" type="submit" value="Search" />
+  </form-->
+
+
+</nav>
+
+</body>
+</html>

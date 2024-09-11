@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>پرواز</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+<body style="background-image: url(https://cdn.dribbble.com/users/30464/screenshots/4332293/media/5a53afa04f8f27866ffe93112060c59c.gif);background-size:100% ">
+<div th:insert="fragments/header :: header"></div>
+<div class="container my-5">
+    <h3>ویرایش پرواز</h3>
+    <div class="ui-icon">
+        <div class="card-body">
+            <div class="col-md-8">
+                <form action="#" th:action="@{/update-flight/{id}(id=${flight.id})}" th:object="${flight}" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="flightNumber" class="ui-icon">شماره پرواز</label>
+                            <input type="text" th:field="*{flightNumber}" class="form-control" id="flightNumber" placeholder="شماره پرواز" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fare" class="ui-icon">هزینه سفر</label>
+                            <input type="text" th:field="*{fare}" class="form-control" id="fare" placeholder="هزینه سفر" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="journeyTime" class="ui-icon">زمان سفر</label>
+                            <input type="text" th:field="*{journeyTime}" class="form-control" id="journeyTime" placeholder="زمان سفر" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="airlines" class="ui-icon">ایرلاین</label>
+                            <select th:field ="*{airlines}" class="form-control" >
+                                <option th:each="airlines: ${airlines}" th:value="${airlines.airlineId}" th:text = "${ airlines.airlineName}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="airplanes" class="ui-icon">هواپیما</label>
+                            <select th:field ="*{airplanes}" class="form-control" >
+                                <option th:each="airplanes: ${airplanes}" th:value="${airplanes.airplaneId}" th:text = "${airplanes.airplaneName}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="sourceStop" class="ui-icon">مبدا</label>
+                            <select th:field ="*{sourceStop}" class="form-control" >
+                                <option th:each="sourceStop: ${sourceStop}" th:value="${sourceStop.id}" th:text = "${sourceStop.name}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="destStop" class="ui-icon">مقصد</label>
+                            <select th:field ="*{destStop}" class="form-control" >
+                                <option th:each="destStop: ${destStop}" th:value="${destStop.id}" th:text = "${destStop.name}"></option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value=" Submit ">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

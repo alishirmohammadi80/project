@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>رزرو</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+<body style="background-image: url(https://cdn.dribbble.com/users/30464/screenshots/4332293/media/5a53afa04f8f27866ffe93112060c59c.gif);background-size:100% ">
+<div th:insert="fragments/header :: header"></div>
+<div class="container my-5">
+    <h3>رزرو</h3>
+    <div class="ui-icon">
+        <div class="card-body">
+            <div class="col-md-8">
+                <form action="#" th:action="@{/Booking_tickets}" th:object="${ticket}" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="seatNumber" class="ui-icon">شماره صندلی</label>
+                            <input type="text" th:field="*{seatNumber}" class="form-control" id="seatNumber" placeholder="شماره صندلی" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="customer" class="ui-icon">کدملی مشتری</label>
+                            <select th:field ="*{customer}" class="form-control" >
+                                <option th:each="customer: ${customer}" th:value="${customer.id}" th:text = "${customer.nationalCode}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="flight" class="ui-icon">شماره پرواز</label>
+                            <select th:field ="*{flight}" class="form-control" >
+                                <option th:each="flight: ${flight}" th:value="${flight.id}" th:text = "${flight.flightNumber}"></option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value=" Submit ">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

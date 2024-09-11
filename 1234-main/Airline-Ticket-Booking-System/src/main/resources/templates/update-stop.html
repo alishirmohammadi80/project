@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>فرودگاه</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+<body style="background-image: url(https://cdn.dribbble.com/users/1897663/screenshots/4062673/media/d8f895cd6de313b9465d5808228227e3.gif);background-size:100% ">
+<div th:insert="fragments/header :: header"></div>
+<div class="container my-5">
+    <h3>ویرایش فرودگاه</h3>
+    <div class="ui-icon">
+        <div class="card-body">
+            <div class="col-md-8">
+                <form action="#" th:action="@{/update-stop/{id}(id=${stop.id})}" th:object="${stop}" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="name" class="col-form-label">نام فرودگاه</label>
+                            <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="نام فرودگاه" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="code" class="col-form-label">کد فرودگاه</label>
+                            <input type="text" th:field="*{code}" class="form-control" id="code" placeholder="کد فرودگاه" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="detail" class="col-form-label">جزئیات</label>
+                            <input type="text" th:field="*{detail}" class="form-control" id="detail" placeholder="جزئیات" />
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value=" Submit ">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+
+</body>
+
+</html>

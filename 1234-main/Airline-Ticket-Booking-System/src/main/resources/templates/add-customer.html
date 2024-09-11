@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>مشتری</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+<body style="background-image: url(https://cdn.dribbble.com/users/740188/screenshots/11467544/media/c767c489d2ee39590d36a5234c5eaedc.gif);background-size:100% ">
+<div th:insert="fragments/header :: header"></div>
+<div class="container my-5">
+    <h3>افزودن مشتری</h3>
+    <div class="ui-icon">
+        <div class="card-body">
+            <div class="col-md-8">
+                <form action="#" th:action="@{/add-customer}" th:object="${customer}" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="fullName" class="col-form-label">نام ونام خانوادگی</label>
+                            <input type="text" th:field="*{fullName}" class="form-control" id="fullName" placeholder="نام ونام خانوادگی" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="nationalCode" class="col-form-label">کدملی</label>
+                            <input type="number" th:field="*{nationalCode}" class="form-control" id="nationalCode" placeholder="کدملی" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="dateOfBirth" class="col-form-label">تاریخ تولد</label>
+                            <input type="date" th:field="*{dateOfBirth}" class="form-control" id="dateOfBirth" placeholder="تاریخ تولد" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="email" class="col-form-label">ایمیل</label>
+                            <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="ایمیل" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="phoneNumber" class="col-form-label">شماره موبایل</label>
+                            <input type="number" th:field="*{phoneNumber}" class="form-control" id="phoneNumber" placeholder="شماره موبایل" />
+                        </div>
+                        <div class="col-md-6">
+                        <input type="submit" class="btn btn-primary" value=" Submit ">
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

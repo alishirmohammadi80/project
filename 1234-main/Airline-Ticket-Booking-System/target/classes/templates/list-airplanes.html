@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>هواپیما</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+<body >
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container my-2">
+    <div class="card">
+        <div class="ui-icon">
+            <div th:switch="${airplanes}" class="container my-5">
+                <p class="ui-icon">
+                <form th:action="@{/searchAirplanes}" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" name= "keyword" id = "keyword" type="text" placeholder="Search" aria-label="Search" th:value="${keyword}">
+                    <input class="btn btn-outline-success active my-2 my-sm-0" type="submit" value="Search" />
+                <a href="/addAirplane" class="btn btn-unique">
+                    <i class="fas fa-user-plus ml-2"> افزودن هواپیما</i></a>
+                <a th:href="@{/airplanes/export/excel}" class="btn btn-unique">
+                    <i class="fa fa-download">  Export Excel </i></a>
+                </form>
+                </p>
+                <div class="col-md-12">
+                    <div th:case="*">
+                        <table class="table">
+                            <thead style="background-color:#36454F; color: aliceblue;">
+                            <tr>
+                                <th>ID</th>
+                                <th>نام هواپیما</th>
+                                <th>کد هواپیما</th>
+                                <th>ظرفیت</th>
+                                <th>ایرلاین</th>
+                                <th>ویرایش</th>
+                                <!--th>حذف</th-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="airplanes:${airplanes}">
+                                <td th:text="${airplanes.airplaneId}"></td>
+                                <td th:text="${airplanes.airplaneName}"></td>
+                                <td th:text="${airplanes.airplaneCode}"></td>
+                                <td th:text="${airplanes.capacity}"></td>
+                                <td th:text="${airplanes.airlines.airlineName}"></td>
+                                <td><a th:href="@{updateAirplane/{id}(id=${airplanes.airplaneId})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                <!--td><a th:href="@{/remove-airplane/{id}(id=${airplanes.airplaneId})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td-->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>
